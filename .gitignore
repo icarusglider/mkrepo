@@ -73,3 +73,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Testing
+local/

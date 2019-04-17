@@ -7,7 +7,7 @@ import urllib
 import boto3
 import StringIO
 import time
-
+from botocore.client import Config
 
 class Storage:
 
@@ -140,7 +140,8 @@ class S3Storage(Storage):
             endpoint_url=endpoint,
             aws_access_key_id=aws_access_key_id,
             aws_secret_access_key=aws_secret_access_key,
-            region_name=aws_region)
+            region_name=aws_region,
+            config=Config(signature_version='s3v4'))
 
     def read_file(self, key):
         fullkey = os.path.normpath(os.path.join(self.prefix, key.lstrip('/')))
